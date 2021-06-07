@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>sample_Mapping2</title>
+  <script src="OrbitControls.js"></script>
 
   <!-- three.jsを読み込む(ローカル) -->
   <!-- <script src="./three.js"></script> -->
@@ -88,9 +89,15 @@ var textureLoader = new THREE.TextureLoader();
     // 円柱を回転させる
     Cylinder.rotation.x += 0.01;
     Cylinder.rotation.y += 0.01;
+    
+    tick();
 
+    // 毎フレーム時に実行されるループイベントです
+    function tick() {
+    // レンダリング
     renderer.render(scene, camera);
-  };
+    requestAnimationFrame(tick);
+  }
   update();
 }
   window.addEventListener('DOMContentLoaded', init);
